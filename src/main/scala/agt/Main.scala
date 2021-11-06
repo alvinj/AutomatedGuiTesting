@@ -52,6 +52,9 @@ object main:
         System.exit(0)
 
     /**
+     * TODO: There is a bug here where the loop is not getting to the final point,
+     * and then the cursor jumps to the final, correct point.
+     *
      * Move the mouse to the given X/Y coordinates, animating the
      * movement.
      */
@@ -83,6 +86,9 @@ object main:
     end moveMouse
 
     /**
+     * TODO: There is a bug here where the loop is not getting to the final point,
+     * and then the cursor jumps to the final, correct point.
+     *
      * Move the mouse to the given X/Y coordinates, animating the
      * movement.
      */
@@ -135,28 +141,36 @@ object main:
         robot.mouseRelease(BUTTON1_DOWN_MASK)
 
     /**
-     * Simulate clicking the mouse at the first point, then quickly dragging the
+     * Simulate clicking the mouse at the first point, then dragging the
      * mouse pointer to the second point, and releasing it. This gives you a way
-     * to spin a list up or down, as just one example.
+     * to spin a list up or down. It should also work as a way to drag-and-drop.
      */
-    def clickDragRelease(p1: Point, p2: Point, numSteps: Int = 50, totalMoveTime: Int = 1_000): Unit =
-        moveMouse(p1.x, p1.y)
+    def clickDragRelease(clickPoint: Point, releasePoint: Point, numSteps: Int = 50, totalMoveTime: Int = 1_000): Unit =
+        moveMouse(clickPoint.x, clickPoint.y)
         sleep(100)
-        // quickly move the mouse to the new point, simulating a drag and release
+        // move the mouse to the new point, simulating a drag and release
         val oldAutoDelay = robot.getAutoDelay
         robot.setAutoDelay(10)
         robot.mousePress(BUTTON1_DOWN_MASK)
-        moveMouse(Point(p2.x, p2.y), numSteps, totalMoveTime)
+        moveMouse(Point(releasePoint.x, releasePoint.y), numSteps, totalMoveTime)
         robot.mouseRelease(BUTTON1_DOWN_MASK)
         robot.setAutoDelay(oldAutoDelay)
 
     /**
-      * Perform a mouse double-click operations at the
-      * given x/y coordinates.
+      * Perform a mouse double-click operations at the given
+      * x/y coordinates.
       */
-    def doubleclick(x: Int, y: Int): Unit =
-        click(x, y, 100)
-        click(x, y, 100)
+    def doubleClick(x: Int, y: Int): Unit =
+        click(x, y, 50)
+        click(x, y, 50)
+
+    /**
+      * Perform a mouse double-click operations at the current
+      * x/y coordinates.
+      */
+    def doubleClick: Unit =
+        click
+        click
 
     /**
      * Do a right-click at the current X/Y coordinates.

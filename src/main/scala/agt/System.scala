@@ -30,39 +30,6 @@ object system:
 
     private def concat(s1: String, s2: String) = s1 + s2
 
-    // /**
-    //  * Run a command and get its result.
-    //  * {{{
-    //  * exec(Seq("ls", "-a", "-l", "/tmp"))   // works
-    //  * exec(Seq("ls", "-a", "-l", "/FOO"))   // throws a RuntimeException
-    //  * }}}
-    //  */
-    // def exec(cmds: Seq[String]): String =
-    //     cmds.!!.trim
-
-    /**
-     * Run a command and get its exit status (i.e., 0, 1, etc.)
-     * TODO: this also prints output to STDOUT.
-     * {{{
-     * val exitCode = execForExitStatus(Seq("ls", "-a", "-l", "/tmp"))
-     * }}}
-     */
-    def execForExitStatus(cmds: Seq[String]): Int =
-        cmds.!
-
-    /**
-     * Run a command and get its result.
-     * The command can include wildcard characters, pipelines, and semi-colons.
-     * {{{
-     * execInShell("ls -al | grep aa")
-     * execInShell("cd /Users/al; ls -al | grep .Trash")
-     * val s = execInShell("ps aux | grep -i firefox")  // multiline string
-     * val n = s.split("\\n").size
-     * }}}
-     */
-    def execInShell(cmd: String): String =
-        Seq("/bin/sh", "-c", cmd).!!.trim
-
     def getClipboardText: String =
         Toolkit.getDefaultToolkit()
                .getSystemClipboard()

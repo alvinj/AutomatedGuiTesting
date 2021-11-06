@@ -23,7 +23,7 @@ object colors:
             false
     end almostEqual
 
-    def colorIsSeen(pixelColor: Color, desiredColor: Color): Boolean =
+    private def colorIsSeen(pixelColor: Color, desiredColor: Color): Boolean =
         if almostEqual(desiredColor.getRed, pixelColor.getRed) && 
            almostEqual(desiredColor.getGreen, pixelColor.getGreen) && 
            almostEqual(desiredColor.getBlue, pixelColor.getBlue)

@@ -1,92 +1,62 @@
 # Automated GUI Testing Software
 
-This is the Automated GUI Testing (AGT) software that I originally
-released in 2010. The code is released under the license included
-in the _LICENSE.txt_ file.
+This is an update to the Automated GUI Testing (AGT) software that I originally
+released in 2010. That code was written with JRuby, and this new code is written
+with Scala 3.
 
-I just made a few updates to the code in early 2019 to account for
-changes to the Ruby/JRuby API and have it working again, at least 
-to the point that a couple of my old scripts are working again.
+**WARNING 1:** Please be aware that the code is currently in flux, and everything is 
+subject to change. That being said, some stuff works. :)
 
-Please be aware that this software was released rather quickly in 2010,
-so it’s not the most well-documented thing I’ve ever created and released.
-
+**WARNING 2:** This project isn’t like most others. Because it automates keystrokes,
+mouse movements, and mouse clicks, it can do real damage to your computer. Therefore,
+don’t just arbitrarily run a script without first understanding what it does.
 
 
 ## Documentation
 
-There is some documentation under the _scripts/docs_ folder.
+Eventually there will be some documentation under a _docs_ folder.
+Until then, this is a quick, unorganized list of the methods that are built into the AGT software.
 
-This is a quick list of the methods that are built into the AGT software:
+General methods:
+- `p(a: Any)` — a shortcut for the println method
+- `done` — call when your script is ended (if desired)
+- `sleep(timeInMs: Int)` — sleep for X ms
+- `c` — add to the *end* of a string to create a comment; all comments are stored as a list
+- `writeComments` — print out the list of comments
 
-- click (x, y, delay=500, do_animation=true)
-- c (s)
-- comment (s)
-- doubleclick (x, y)
-- done
-- echo (data)
-- start_timer
-- stop_timer
-- get_elapsed_time
-- move_mouse (x, y)
-- move_mouse_animated (x,y)
-- type_keys (data)
-- type (data)
-- wait (time_ms)
-- wait_for_xycolor(*data)
-- wait_for_xycolor_to_go_away(*data)
-- foreground (app_name)
-- apple (the_key)
-- ctrl (key_code)
-- tab
-- enter
-- esc
-- type_keycode (char_as_int)
+Mouse-related methods:
+- `moveMouse(x: Int, y: Int)` — move the mouse to the X/Y coordinates
+- `moveMouse(p: Point, numSteps: Int = 50, totalMoveTime: Int = 1_000)` — move the mouse, with animation control
+- `click(x: Int, y: Int, delayInMs: Int = 250)` — left-click the given point
+- `click` — left-click wherever the mouse cursor is right now
+- `clickDragRelease(p1: Point, p2: Point, numSteps: Int = 50, totalMoveTime: Int = 1_000)` — click and drag, good for scrolling a list
+- `doubleclick(x: Int, y: Int)` — double-click the X/Y coordinates
+- `rightClick` — right-click at the current X/Y coordinates
 
-You can find most or all of those methods in the
-_AgileGuiTesting.rgb_ file.
+Keyboard-related methods:
+- `enter` — convenience method for the ENTER key
+- `esc` — convenience method for the ESC key
+- `tab` — convenience method for the TAB key
+- `pressAndReleaseKeys(keycodes: Seq[Int], keyPressTime: Int = 200)` — press and then release a sequence of keys
+- `ty(c: Int)` — type a character
+- `ty(s: String, inEscapeMode: Boolean = false)` — type a string (just like typing at the keyboard)
 
-For more details, please see the _scripts/doc_ folder for Ruby rdoc 
-documentation. In particular, you'll want to look at the documentation 
-for the _AgileGuiTesting.rgb_ file, as that’s the main source code file.
+Color-related methods:
+- `waitForColor(p: Point, c: Color, maxWaitTime: Long = 10_000)` — wait for a color to appear at a point
+- `waitForColorToGoAway(p: Point, c: Color, maxWaitTime: Long = 10_000)` — wait for a color to disappear at a point
+- `getPixelColor(x: Int, y: Int)` — get the color at the X/Y coordinates
 
-Also, please see scripts like these for examples of how to use AGT:
+macOS methods:
+- `startApp(app_name: String)` — start an app (also brings an app to the foreground)
+- `startIphoneSimulator` — a convenience method to start the iPhone/iOS simulator
+- `speak(text: String)` — speak the given string using the Mac text-to-speech ability
+- `runAppleScript(cmd: String)` — run the given AppleScript
+- `apple(key: Int | Char)` — pass a key to the Apple/Command key
+- `activateMenuBar` — activate the Mac menu bar
 
-- 1OpenChrome.rb (i just wrote this script in 2019 to get things working again)
-- 3ChromeOpenDDAndOma.rb
-- 4TypeIntoTextEdit.rb
-
-
-
-## Running a script
-
-To run a script, move into the _scripts_ directory and then
-run a command like this:
-
-````
-jruby -I. 1OpenChrome.rb
-````
-
-
-
-## Needs some cleanup
-
-Also please note that this project needs some cleanup.
-There were several “scripts*” directories in the project,
-and rather than delete them all I thought I’d keep them 
-and clean them up when I have some free time.
-
-
-
-
-
-
-
-
-
-
-
-
+System-related methods:
+- `exec(cmd: String): (ExitCode, Stdout, Stderr)` — run an external command
+- `getClipboardText` — get the current text off the system clipboard
 
 
 

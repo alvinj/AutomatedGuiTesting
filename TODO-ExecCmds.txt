@@ -1,0 +1,94 @@
+TODO: Create a 'command/exec' module to let me run external commands. Commands I have used in the past are:
+
+- Count the number of running processes
+- Run a 'killall' script
+
+Scala Process source code examples are included below.
+
+import sys.process.*
+cmd("cat /etc/passwd")
+
+// TODO: commands can throw exceptions
+
+// exec(Seq("ls", "-a", "-l", "/tmp"))   // works
+// exec(Seq("ls", "-a", "-l", "/foo"))   // ls: /foo: No such file or directory
+                                         // java.lang.RuntimeException: Nonzero exit value: 1
+def exec(cmds: Seq[String]): String =
+    cmds.!!.trim
+
+// execInShell("cd /Users/al/Projects/XYLocator2/src/main/java/com/devdaily/xylocator/; ls -al")
+// execInShell("ls -al | grep aa")
+def execInShell(cmd: String): String =
+    Seq("/bin/sh", "-c", cmd).!!.trim
+
+def execPipeline(cmds: Seq(String)): String =
+    
+
+
+
+// get exit code
+val exitCode = "ls -al".!
+val exitCode = Seq("ls", "-a", "-l", "/tmp").!
+
+// get the result
+val result = "ls -al" !!   // result is a multiline string of ls output
+val output = Seq("ls", "-al").!!
+val output = Seq("ls", "-a", "-l").!!
+val output = Seq("ls", "-a", "-l", "/tmp").!!
+val dir = "pwd".!!.trim
+val r = Seq("/bin/sh", "-c", "ls | grep .scala").!!
+
+// pipeline
+val result = "ls -al" #| "grep Foo" !
+val result = "ps auxw" #| "grep http" #| "wc -l" !
+val numProcs = ("ps auxw" #| "wc -l").!!.trim
+println(s"#procs = $numProcs")
+val javaProcs = ("ps auxw" #| "grep java").!!.trim
+
+// run with wildcard
+val status = Seq("/bin/sh", "-c", "ls *.scala").!
+val status = Seq("/bin/sh", "-c", "echo *").!
+val status = Seq("/bin/sh", "-c", "ls *.scala").!
+val status = Seq("/bin/sh", "-c", "grep -i foo *.scala").!
+// status here is '0'
+val status = Seq("find", ".", "-name", "*.scala", "-type", "f").!
+
+// run in a different dir
+import java.io.File
+val output = Process("ls -al", new File("/tmp")).!!
+println(output)
+
+// get STDOUT and STDERR
+import sys.process._
+val stdout = new StringBuilder
+val stderr = new StringBuilder
+val status = "ls -al FRED" ! ProcessLogger(stdout append _, stderr append _)
+println(status)
+println("stdout: " + stdout)
+println("stderr: " + stderr)
+
+REPL EXAMPLE:
+scala> val status = Seq("find", "/usr", "-name", "make") ! ProcessLogger(stdout append _, stderr append _)
+status: Int = 1
+
+scala> println(stdout)
+/usr/bin/make
+
+scala> println(stderr)
+find: /usr/local/mysql-5.0.67-osx10.5-x86/data: Permission denied
+
+
+// LONG APPLESCRIPT
+https://devdaily.net/macos/applescript-how-to-open-pdf-file-in-preview-go-to-page
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,4 +1,4 @@
-# Automated GUI Testing Software
+# Automated GUI Testing (AGT) Software
 
 This is an update to the Automated GUI Testing (AGT) software that I originally
 released in 2010. That code was written with JRuby, and this new code is written
@@ -11,10 +11,19 @@ subject to change. That being said, some stuff works. :)
 mouse movements, and mouse clicks, it can do real damage to your computer. Therefore,
 don’t just arbitrarily run a script without first understanding what it does.
 
+**NOTE**: Although I call this software “Automated GUI Testing,” it can also be
+used for *GUI scripting* tasks. That being said, my current primary reason for it
+is GUI testing, hence the name.
+
 
 ## Documentation
 
-Eventually there will be some documentation under a _docs_ folder.
+The most current documentation can be found in the examples under the
+[src/main/scala/examples](src/main/scala/examples) folder.
+
+### Other docs
+
+Eventually there will be more documentation under a _docs_ folder.
 Until then, this is a quick, unorganized list of the methods that are built into the AGT software.
 
 General methods:

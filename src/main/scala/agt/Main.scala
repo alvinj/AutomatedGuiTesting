@@ -11,6 +11,7 @@ object main:
     private val robot = Robot()
     robot.setAutoDelay(50)
     robot.setAutoWaitForIdle(true)
+    private val ARROW_KEY_WAIT_TIME = 100
     
     private val SHIFT_KEY_HASH = Map(
         ':' -> ';', 
@@ -208,6 +209,22 @@ object main:
 
     // A convenience method for typing an [Escape] character.
     def esc = ty(VK_ESCAPE)
+    
+    def arrowUp = 
+        ty(VK_UP)
+        wait(ARROW_KEY_WAIT_TIME)
+
+    def arrowDown = 
+        ty(VK_DOWN)
+        wait(ARROW_KEY_WAIT_TIME)
+
+    def arrowLeft = 
+        ty(VK_LEFT)
+        wait(ARROW_KEY_WAIT_TIME)
+
+    def arrowRight = 
+        ty(VK_RIGHT)
+        wait(ARROW_KEY_WAIT_TIME)
 
     /**
       * TODO: this method may be unsafe. See the approach in `ty`

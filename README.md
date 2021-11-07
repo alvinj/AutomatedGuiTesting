@@ -43,12 +43,16 @@ Mouse-related methods:
 - `rightClick` — right-click at the current X/Y coordinates
 
 Keyboard-related methods:
+- `arrowUp` — convenience method for the up arrow
+- `arrowDown` — convenience method for the down arrow
+- `arrowLeft` — convenience method for the left arrow
+- `arrowRight` — convenience method for the right arrow
 - `enter` — convenience method for the ENTER key
 - `esc` — convenience method for the ESC key
 - `tab` — convenience method for the TAB key
-- `pressAndReleaseKeys(keycodes: Seq[Int], keyPressTime: Int = 200)` — press and then release a sequence of keys
 - `ty(c: Int)` — type a character
 - `ty(s: String, inEscapeMode: Boolean = false)` — type a string (just like typing at the keyboard)
+- `pressAndReleaseKeys(keycodes: Seq[Int], keyPressTime: Int = 200)` — press and then release a sequence of keys
 
 Color-related methods:
 - `waitForColor(p: Point, c: Color, maxWaitTime: Long = 10_000)` — wait for a color to appear at a point

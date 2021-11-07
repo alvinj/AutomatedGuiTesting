@@ -10,11 +10,34 @@ import java.awt.Color
 
 @main def macMenubarExample =
 
-    speak("Using the menu bar")
-    sleep(500)
+    // note: all of the 'sleep' calls are so that i can watch this run
+
     activateMenuBar
-    for i <- 1 to 6 do
-        ty(VK_DOWN)
-        sleep(50)
+    sleep(500)
+
+    // the first arrow-down causes the Apple menu to be displayed
+    arrowDown
+
+    // now go down 3
+    arrowDown
+    arrowDown
+    arrowDown
+
+    // come back up 3
+    arrowUp
+    arrowUp
+    arrowUp
+
+    // go right at the top of the menu items
+    arrowRight
+    arrowRight
+
+    // then go back left
+    arrowLeft
+    arrowLeft
+
+    // esc closes the menu
     esc
+
+
 

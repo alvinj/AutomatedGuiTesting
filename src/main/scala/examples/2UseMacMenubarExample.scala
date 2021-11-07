@@ -1,16 +1,12 @@
 package tests
 
-import com.valleyprogramming.agt.Point
 import com.valleyprogramming.agt.main.*
 import com.valleyprogramming.agt.macos.*
-import com.valleyprogramming.agt.colors.*
-import com.valleyprogramming.agt.system.*
-import java.awt.event.KeyEvent.*
-import java.awt.Color
 
 @main def macMenubarExample =
 
-    // note: all of the 'sleep' calls are so that i can watch this run
+    // TODO: This has an sbt problem where the first time it’s run, sbt
+    // shows a "Boot" process in the menu bar. Look into that.
 
     activateMenuBar
     sleep(500)

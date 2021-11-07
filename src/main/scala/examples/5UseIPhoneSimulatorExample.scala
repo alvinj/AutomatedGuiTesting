@@ -1,12 +1,11 @@
 package tests
 
+import java.awt.Color
 import com.valleyprogramming.agt.Point
 import com.valleyprogramming.agt.main.*
 import com.valleyprogramming.agt.macos.*
 import com.valleyprogramming.agt.colors.*
-import com.valleyprogramming.agt.system.*
 import java.awt.event.KeyEvent.*
-import java.awt.Color
 
 def waitForAppleHealthIcon = 
     "waiting until i see the white in the Apple Health icon ...".c

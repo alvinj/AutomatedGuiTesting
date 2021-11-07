@@ -4,23 +4,24 @@ import com.valleyprogramming.agt.Point
 import com.valleyprogramming.agt.main.*
 import com.valleyprogramming.agt.macos.*
 import com.valleyprogramming.agt.colors.*
-import com.valleyprogramming.agt.system.*
-import java.awt.event.KeyEvent.*
+import com.valleyprogramming.agt.system.{exec, getClipboardText}
 import java.awt.Color
 
 def printNumberOfChromeProcesses = 
     val (exitCode, stdout, stdin) = exec("ps aux | grep -i chrome | grep -v grep | wc -l")
     println(s"Number of Chrome processes running = $stdout")
 
+/**
+ * Runs Google Chrome on a macOS system.
+ * The main expectation of this script is that Chrome is not currently running.
+ * Also, when it does start, this script types into the URL field of the 
+ * first browser tab.
+ * It also closes two tabs and quits Chrome when it’s finished.
+ */
 @main def chromeExample =
 
     // All of the `sleep` commands in here are for me, so I can watch the test.
     // They aren’t necessary for a completely-automated test.
-    
-    // The main expectation of this script is that Chrome is not currently running.
-    // Also, when it does start, this script types into the URL field of the 
-    // first browser tab.
-    // It also closes two tabs and quits Chrome when it’s finished.
 
     // start google chrome and see how many processes are running
     speak("Starting Chrome...")

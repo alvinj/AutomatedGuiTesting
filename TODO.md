@@ -1,15 +1,25 @@
 # TODO List
 
-- Add ScalaTest and unit tests for the `exec` method
 - `ctrl` key method
+    - can be done currently with `pressAndReleaseKeys`
 - `alt/opt` key method
+    - can be done currently with `pressAndReleaseKeys`
 - `shift` key method
+    - can be done currently with `pressAndReleaseKeys`
 - methods for function keys
-- arrow key methods
 - create 1+ methods to access a browser’s DOM code
-- `waitForImage` method
-- `waitForImageToGoAway` method
+- changes/updates to the `findSmallImageInLargeImage` code:
+    - `waitForImage` method
+    - `waitForImageToGoAway` method
+- eventually use a much better image recognition tool
 - `killall` method
+
+
+## Done (finished recently)
+
+- arrow key methods
+- basic image-recognition (`findSmallImageInLargeImage` method)
+- add ScalaTest and unit tests for the `exec` method
 
 
 ## Notes
@@ -24,3 +34,6 @@ tell application "System Events"
     keystroke return
 end tell
 ```
+
+
+

@@ -263,6 +263,7 @@ object main:
         wait(20)
         robot.keyRelease(keycode)
 
+    // TODO: rename to just `shift` and make it public?
     private def shiftTypeKeycode(keycode: Int): Unit =
         robot.keyPress(VK_SHIFT)
         robot.keyPress(keycode)

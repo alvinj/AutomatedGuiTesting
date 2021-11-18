@@ -4,6 +4,9 @@ import java.awt.{Color, MouseInfo, Robot}
 import java.awt.event.InputEvent.*
 import java.awt.event.KeyEvent.*
 
+/**
+ * A good macOS/AppleScript resource: https://eastmanreference.com/complete-list-of-applescript-key-codes
+ */
 object macos:
 
     private val robot = Robot()

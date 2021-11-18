@@ -21,4 +21,6 @@ Related to that, here are some links about using the OpenCV imaging library:
 
 Of course there are other approaches, including AI/ML stuff, but this is just one imaging library I found.
 
+This is a good link related to macOS, AppleScript, and keyboard keycodes:  
+- https://eastmanreference.com/complete-list-of-applescript-key-codes
 

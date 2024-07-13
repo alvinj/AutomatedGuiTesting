@@ -1,8 +1,12 @@
 _OLD/
 
+# project-specific
+Working/
+
 # bloop and metals
 .bloop
 .bsp
+.scala-build
 
 # metals
 project/metals.sbt

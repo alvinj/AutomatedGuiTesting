@@ -11,6 +11,8 @@ subject to change. That being said, some stuff works. :)
 mouse movements, and mouse clicks, it can do real damage to your computer. Therefore,
 don’t just arbitrarily run a script without first understanding what it does.
 
+**WARNING 1:** I have only tested this code on macOS systems.
+
 **NOTE**: Although I call this software “Automated GUI Testing,” it can also be
 used for *GUI scripting* tasks. That being said, my current primary reason for it
 is GUI testing, hence the name.

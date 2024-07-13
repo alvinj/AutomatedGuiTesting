@@ -56,6 +56,17 @@ Keyboard-related methods:
 - `ty(s: String, inEscapeMode: Boolean = false)` — type a string (just like typing at the keyboard)
 - `pressAndReleaseKeys(keycodes: Seq[Int], keyPressTime: Int = 200)` — press and then release a sequence of keys
 
+Here’s an example of `pressAndReleaseKeys`:
+
+```scala
+val keySeq = Seq(
+    VK_META,
+    VK_CONTROL,
+    VK_F
+)
+pressAndReleaseKeys(keySeq: Seq[Int], 300)
+```
+
 Color-related methods:
 - `waitForColor(p: Point, c: Color, maxWaitTime: Long = 10_000)` — wait for a color to appear at a point
 - `waitForColorToGoAway(p: Point, c: Color, maxWaitTime: Long = 10_000)` — wait for a color to disappear at a point

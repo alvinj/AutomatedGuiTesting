@@ -3,6 +3,8 @@ package com.valleyprogramming.agt
 import java.awt.{Color, MouseInfo, Robot}
 import java.awt.event.InputEvent.*
 import java.awt.event.KeyEvent.*
+import scala.sys.process.*
+import com.valleyprogramming.agt.system.{exec, getClipboardText}
 
 /**
  * A good macOS/AppleScript resource: https://eastmanreference.com/complete-list-of-applescript-key-codes
@@ -143,6 +145,37 @@ object macos:
       */
     private def wait(timeInMs: Int): Unit =
         robot.delay(timeInMs)
+
+    /**
+     * TODO: needs testing; handle errors.
+     * `recipient` can be either an email address or phone number.
+     */
+    def sendTextMessage(recipient: String, message: String): Int =
+        val appleScript = s"""
+            |tell application "Messages"
+            |    set targetService to 1st service whose service type = iMessage
+            |    set targetBuddy to buddy "$recipient" of targetService
+            |    send "$message" to targetBuddy
+            |end tell
+        """.stripMargin
+        Seq("osascript", "-e", appleScript).!
+
+    // this is the keystroke to make a macOS app full screen.
+    def makeForegroundWindowFullScreen(): Unit =
+        // CMD - CTRL - F
+        val keySeq = Seq(
+            VK_META,
+            VK_CONTROL,
+            VK_F
+        )
+        pressAndReleaseKeys(keySeq: Seq[Int], 300)
+
+    /**
+     * TODO: test, and return/handle the results
+     */
+    def createSnapshotAndWriteToFile(outputFile: String, symbol: String): Unit =
+        val cmd = s"screencapture -o -m -t jpg $outputFile"
+        val (status, stdout, stderr) = exec(cmd)
 
 end macos
 

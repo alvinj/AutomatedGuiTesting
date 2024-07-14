@@ -5,7 +5,7 @@ import java.awt.event.InputEvent.*
 import java.awt.event.KeyEvent.*
 import scala.sys.process.*
 import com.valleyprogramming.agt.system.{exec, getClipboardText}
-import import com.valleyprogramming.agt.main.pressAndReleaseKeys
+import com.valleyprogramming.agt.main.pressAndReleaseKeys
 
 /**
  * A good macOS/AppleScript resource: https://eastmanreference.com/complete-list-of-applescript-key-codes

@@ -5,6 +5,7 @@ import sys.process.*
 // all for clipboard stuff
 import java.awt.HeadlessException
 import java.awt.Toolkit
+import java.awt.datatransfer.StringSelection
 import java.awt.datatransfer.DataFlavor
 import java.awt.datatransfer.UnsupportedFlavorException
 import java.io.IOException

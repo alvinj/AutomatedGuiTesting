@@ -36,9 +36,31 @@ object system:
                .getData(DataFlavor.stringFlavor)
                .asInstanceOf[String]
 
+    /**
+     * TODO: test
+     */
+    def putStringOnClipboard(text: String): Unit =
+        val stringSelection = new StringSelection(text)
+        val clipboard = Toolkit.getDefaultToolkit.getSystemClipboard
+        clipboard.setContents(stringSelection, null)
+
+    /**
+     * TODO: test; get rid of older function when you can.
+     */
+    def getStringFromClipboard: Option[String] =
+        try
+            val clipboard = Toolkit.getDefaultToolkit.getSystemClipboard
+            val contents = clipboard.getContents(null)
+            if contents != null && contents.isDataFlavorSupported(DataFlavor.stringFlavor) then
+                Some(contents.getTransferData(DataFlavor.stringFlavor).asInstanceOf[String])
+            else
+                None
+        catch
+            case e: Exception =>
+                System.err.println("Error getting string from clipboard: " + e.getMessage)
+                None
+
 end system
-
-
 
 
 

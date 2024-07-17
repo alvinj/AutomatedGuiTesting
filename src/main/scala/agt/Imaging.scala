@@ -153,7 +153,25 @@ object imaging:
         val screenCapture = robot.createScreenCapture(rectangle)
         screenCapture
     end createScreenShot
-
+    
+    
+    def findMidPointOfSmallImageInLargeImage(
+        smImgArr: Array[Array[Color]],
+        smImgRows: Int,
+        smImgCols: Int,
+        lgImgArr: Array[Array[Color]],
+        lgImgRows: Int,
+        lgImgCols: Int
+    ): Option[Point] = 
+        val tuple3Opt = findSmallImageInLargeImage(
+            smImgArr,
+            smImgRows,
+            smImgCols,
+            lgImgArr,
+            lgImgRows,
+            lgImgCols
+        )
+        tuple3Opt.map(tup => tup._3)
 
     // TODO: add unit tests.
     def findSmallImageInLargeImage(

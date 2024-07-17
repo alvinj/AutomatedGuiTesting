@@ -4,7 +4,7 @@ lazy val root = project
     .in(file("."))
     .settings(
         name := "AutomatedGuiScripting",
-        version := "0.2",
+        version := "0.3",
         scalaVersion := scala3Version,
         libraryDependencies ++= Seq(
             // ScalaTest does not yet work with Scala 3.1

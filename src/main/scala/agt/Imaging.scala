@@ -179,7 +179,7 @@ object imaging:
             for lg_curr_col <- 0 to lg_ncols_to_get do
                 // debug(s"lg_curr_col = $lg_curr_col")
                 if lg_curr_row % 50 == 0 then
-                    println(s"looking at lgImgArr($lg_curr_row)($lg_curr_col)")
+                    debug(s"looking at lgImgArr($lg_curr_row)($lg_curr_col)")
 
                 // NOTE: the code is orders of magnitude faster by first doing this little test.
                 // There is probably a *lot* of optimization work that can be done with my
